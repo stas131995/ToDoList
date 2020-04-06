@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Routers;
+
 class Router
 {
     public function get($function)

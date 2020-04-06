@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Repositories\TaskRepository;
+use App\Models\TaskModel;
+
 class TodoController
 {
     public function index()

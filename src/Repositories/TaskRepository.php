@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Repositories;
+
+use App\Models\TaskModel;
+use App\DB\DB;
+
 class TaskRepository
 {
     private function mapResultToModel(array $result): TaskModel

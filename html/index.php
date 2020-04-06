@@ -1,10 +1,9 @@
 <?php
 
-include '../DB/DB.php';
-include '../Models/TaskModel.php';
-include '../Routers/Router.php';
-include '../Controllers/TodoController.php';
-include '../Repositorys/TaskRepository.php';
+require "../vendor/autoload.php";
+
+use App\Controllers\TodoController;
+use App\Routers\Router;
 
 $router = new Router();
 
@@ -27,4 +26,3 @@ $router->delete(function () {
     $controller = new TodoController();
     $controller->delete();
 });
-

@@ -4,11 +4,19 @@ namespace App\Routers;
 
 class Router
 {
-    public function get($function)
+    protected function resolvePattern(string $pattern)
+    {
+        $split = explode("::", $pattern);
+        $className = "\\App\\Controllers\\" . $split[0];
+        $methodName = $split[1];
+        $instance = new $className();
+        return $instance->$methodName();
+    }
+
+    public function get(string $pattern)
     {
         if ($_SERVER['REQUEST_METHOD'] === "GET") {
-            $function();
-            exit(0);
+            return $this->resolvePattern($pattern);
         }
     }
 

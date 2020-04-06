@@ -1,6 +1,7 @@
 <?php
 
 require "../vendor/autoload.php";
+define("ROOT_DIR", dirname(__DIR__, 1));
 
 use App\Controllers\TodoController;
 use App\Routers\Router;

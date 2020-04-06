@@ -55,6 +55,6 @@ class TodoController
 
     protected function view($todoItems, $errors = [])
     {
-        require "../Views/view.php";
+        include ROOT_DIR . "/views/view.php";
     }
 }

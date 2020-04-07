@@ -12,20 +12,6 @@
 
     <div class="header">
         <h2>My To Do List</h2>
-        <form method="post" id="insert"  action="">
-            <input type="hidden" name="method" value="post">
-            <table>
-                <tr>
-                    <input style="width:35%" type="text" name="title" placeholder="Title...">
-                </tr>
-                <tr>
-                    <input style="width:35%;margin-left:20px" type="text" name="description" placeholder="Description...">
-                </tr>
-                <tr>
-                    <button style="margin-left:20px" type="submit" class="addBtn">Add</button>
-                </tr>
-            </table>
-        </form>
     </div>
     <ul id="myUL">
         <?php foreach ($todoItems as $model) : ?>
@@ -52,5 +38,14 @@
                 </li>
         <?php endforeach ?>
     </ul>
+    <form method="post" action="">
+        <input type="hidden" name="method" value="post">
+        <div name="inputs">
+            <input style="width:35%;text-align:centre;" type="text" name="title" placeholder="Title...">
+            <input style="width:35%;text-align:centre;" type="text" name="description" placeholder="Description...">
+        </div>
+        <button  style="margin-left:50%" type="submit"><img src="https://img.icons8.com/color/48/000000/add.png"/></button>
+    </form>
+
 </body>
 </html>

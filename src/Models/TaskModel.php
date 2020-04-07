@@ -59,7 +59,7 @@ class TaskModel
         return $this->created_date;
     }
 
-    public function setCreatedDate(int $date): void
+    public function setCreatedDate(string $date): void
     {
         $this->created_date = $date;
     }

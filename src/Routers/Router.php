@@ -20,27 +20,24 @@ class Router
         }
     }
 
-    public function post($function)
+    public function post(string $pattern)
     {
         if (isset($_POST['method']) && $_POST['method'] === "post") {
-            $function();
-            exit(0);
+            return $this->resolvePattern($pattern);
         }
     }
 
-    public function patch($function)
+    public function patch(string $pattern)
     {
         if (isset($_POST['method']) && $_POST['method'] === "patch") {
-            $function();
-            exit(0);
+            return $this->resolvePattern($pattern);
         }
     }
 
-    public function delete($function)
+    public function delete(string $pattern)
     {
         if (isset($_POST['method']) && $_POST['method'] === "delete") {
-            $function();
-            exit(0);
+            return $this->resolvePattern($pattern);
         }
     }
 

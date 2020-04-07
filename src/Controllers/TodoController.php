@@ -10,8 +10,8 @@ class TodoController
     public function index()
     {
         $repository = new TaskRepository();
-        $tasks = $repository->getAll();
-        $this->view($tasks);
+        $todoItems = $repository->getAll();
+        $this->view("view", compact("todoItems"));
     }
 
     public function create()
@@ -30,8 +30,8 @@ class TodoController
             $task->setDescription($description);
             $repository->create($task);
         }
-        $tasks = $repository->getAll();
-        $this->view($tasks, $errors);
+        $todoItems = $repository->getAll();
+        $this->view("view", compact("todoItems", "errors"));
     }
 
     public function update()
@@ -40,8 +40,8 @@ class TodoController
         $task = $repository->getById($_POST['id']);
         $task->setDone($task->getDone() ? 0 : 1);
         $repository->update($task);
-        $tasks = $repository->getAll();
-        $this->view($tasks);
+        $todoItems = $repository->getAll();
+        $this->view("view", compact("todoItems"));
         
     }
 
@@ -49,12 +49,14 @@ class TodoController
     {
         $repository = new TaskRepository();
         $repository->deleteById($_POST['id']);
-        $tasks = $repository->getAll();
-        $this->view($tasks);
+        $todoItems = $repository->getAll();
+        $this->view("view", compact("todoItems"));
     }
 
-    protected function view($todoItems, $errors = [])
+    protected function view(string $viewName,array $params)
     {
-        include ROOT_DIR . "/views/view.php";
+        extract($params);
+        include ROOT_DIR . "/views/{$viewName}.php";
     }
+
 }

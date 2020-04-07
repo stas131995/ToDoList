@@ -4,9 +4,11 @@
     <link rel="stylesheet" type="text/css" href="styles.css" media="screen"/>
 </head>
 <body>
-    <?php foreach ($errors as $error) : ?>
-        <p><?=$error?></p>
-    <?php endforeach ?>
+    <?php if (isset($errors)) : ?>
+        <?php foreach ($errors as $error) : ?>
+            <p><?=$error?></p>
+        <?php endforeach ?>
+    <?php endif ?>
 
     <div class="header">
         <h2>My To Do List</h2>

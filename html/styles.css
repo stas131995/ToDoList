@@ -1,4 +1,107 @@
-.a,
-.b {
-  display: inline-block;
+ul {
+  margin: auto;
+  width: 400px;
+}
+
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+
+
+.row {
+  margin-left:auto;
+  margin-right: auto;
+  text-align:centre;
+  width:310px;
+  border:none;
+  font-size:20px;
+  background-color: transparent;
+}
+
+
+.add-button {
+  background-color: #00A24B;
+  border: 0;
+  color: #FFF;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 31px;
+  cursor: pointer;
+}
+.add-button:hover {
+  background-color: rgb(0, 122, 57);
+}
+.add-button:active {
+  outline: none;
+  background-color: rgb(0, 87, 41);
+}
+.add-button:focus {
+  outline: none;
+}
+
+body {
+text-align: center;
+}
+
+.inputDiv {
+  margin:20px;
+  margin-left:auto;
+  margin-right: auto;
+
+}
+
+.row {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.remove-button {
+  background-color: red;
+  border: 0;
+  color: #FFF;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 27px;
+  cursor: pointer;
+}
+.remove-button:hover {
+  background-color: rgb(107, 5, 14);
+}
+.remove-button:active {
+  outline: none;
+  background-color: rgb(36, 1, 1);
+}
+.add-button:focus {
+  outline: none;
+}
+
+.input {
+  width:400px;
+  text-align:centre;
+}
+
+.myUL {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
 }

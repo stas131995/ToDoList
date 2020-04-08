@@ -56,7 +56,7 @@ class TodoController
     protected function view(string $viewName,array $params)
     {
         extract($params);
-        include ROOT_DIR . "/views/{$viewName}.php";
+        include ROOT_DIR . "/src/views/{$viewName}.php";
     }
 
 }

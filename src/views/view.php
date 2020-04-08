@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" type="text/css" href="styles.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="styles.css?v=<?= time() ?>" media="screen"/>
 </head>
 <body>
     <?php if (isset($errors)) : ?>
@@ -10,18 +10,18 @@
         <?php endforeach ?>
     <?php endif ?>
 
-    <div class="header">
+    <div class="myheader">
         <h2>My To Do List</h2>
     </div>
-    <ul id="myUL">
+    <ul class="myUL" id="myUL">
         <?php foreach ($todoItems as $model) : ?>
             <li class="<?= $model->getDone() ? 'checked' : '' ?>">
-                    <table style="width:100%">
+                    <table style="width:50%">
                         <tr>
                             <form method="post" action="">
                                 <input type="hidden" name="method" value="patch">
                                 <input type="hidden" name="id" value="<?= $model->getId() ?>">
-                                <button class="Mrow" style="text-align: left;width:95%;border:none;font-size:20px;background-color: transparent;"  type="submit">
+                                <button class="row"   type="submit">
                                     <?= $model->getTitle()."--".$model->getDescription()."--".$model->getCreatedDate() ?>
                                 </button>
                             </form>
@@ -30,7 +30,7 @@
                             <form method="post" action="">
                                 <input type="hidden" name="method" value="delete">
                                 <input type="hidden" name="id" value="<?= $model->getId() ?>">
-                                <button  style="padding: 0; border: none;background-color: transparent;" type="submit"><img src="image/remove.png" /></button>
+                                <button  class="remove-button" type="submit">-</button>
                             </form>
                         </tr>
                     </table>
@@ -40,11 +40,13 @@
     </ul>
     <form method="post" action="">
         <input type="hidden" name="method" value="post">
-        <div name="inputs">
-            <input style="width:35%;text-align:centre;" type="text" name="title" placeholder="Title...">
-            <input style="width:35%;text-align:centre;" type="text" name="description" placeholder="Description...">
+        <div class="inputDiv" name="titlediv">
+            <input class="input" type="text" name="title" placeholder="Title...">
         </div>
-        <button  style="margin-left:50%" type="submit"><img src="https://img.icons8.com/color/48/000000/add.png"/></button>
+        <div class="inputDiv" name="descrdiv">
+            <input class="input" type="text" name="description" placeholder="Description...">
+        </div>
+        <button  class="add-button" type="submit">+</button>
     </form>
 
 </body>

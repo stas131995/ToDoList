@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <script src="https://kit.fontawesome.com/ce69e8aa32.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="styles.css?v=<?= time() ?>" media="screen"/>
 </head>
 <body>
@@ -30,7 +31,9 @@
                             <form method="post" action="">
                                 <input type="hidden" name="method" value="delete">
                                 <input type="hidden" name="id" value="<?= $model->getId() ?>">
-                                <button  class="remove-button" type="submit">-</button>
+                                <button  class="remove-button" type="submit">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
                             </form>
                         </tr>
                     </table>

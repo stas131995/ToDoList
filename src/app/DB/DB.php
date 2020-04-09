@@ -3,6 +3,7 @@
 namespace App\DB;
 
 use mysqli;
+use Exception;
 
 class DB
 {
@@ -11,10 +12,10 @@ class DB
     public static function connect()
     {
         self::$connection = new mysqli(
-            "localhost",
-            "root",
-            "password",
-            "ToDoList"
+            getenv('MYSQL_HOST'),
+            getenv('MYSQL_USER'),
+            getenv('MYSQL_PASSWORD'),
+            getenv('MYSQL_DATABASE')
         );
         if (self::$connection->connect_errno) {
             throw new Exception(self::$connection->connect_error);

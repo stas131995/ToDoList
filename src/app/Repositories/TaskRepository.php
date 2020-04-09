@@ -28,7 +28,7 @@ class TaskRepository
                done,
                created_date 
            FROM tasks
-           ORDER BY done, created_date"
+           ORDER BY done, created_date DESC"
        );
        $result = $query->fetch_all(MYSQLI_ASSOC);
        return array_map(function ($row) {
@@ -74,6 +74,7 @@ class TaskRepository
         );
         $id = DB::getConnection()->insert_id;
         $model->setId($id);
+        $model->setCreatedDate("now");
     }
 
     public function update(TaskModel $model): void

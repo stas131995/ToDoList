@@ -1,14 +1,14 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require "../vendor/autoload.php";
 
 define("ROOT_DIR", dirname(__DIR__, 1));
 
-use App\Routers\Router;
+$dotenv = Dotenv\Dotenv::createImmutable(ROOT_DIR);
+$dotenv->load();
 
-$router = new Router();
-
-$router->get("TodoController::index");
-$router->post("TodoController::create");
-$router->patch("TodoController::update");
-$router->delete("TodoController::delete");
+require "../src/routes.php";

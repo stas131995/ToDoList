@@ -61,7 +61,7 @@ class TaskModel
 
     public function setCreatedDate(string $date): void
     {
-        $this->created_date = $date;
+        $this->created_date = date_format(date_create($date), 'Y-m-d');
     }
     
 }

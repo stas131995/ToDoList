@@ -26,7 +26,7 @@ class TaskRepository
                title,
                description,
                done,
-               DATE_FORMAT(created_date, '%m/%d/%Y') as created_date 
+               created_date 
            FROM tasks
            ORDER BY done, created_date"
        );
@@ -44,7 +44,7 @@ class TaskRepository
                 title,
                 description,
                 done,
-                DATE_FORMAT(created_date, '%m/%d/%Y') as created_date 
+                created_date
             FROM tasks
             WHERE id = {$id}"
         );

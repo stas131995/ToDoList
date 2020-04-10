@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Repositories\TaskRepository;
+use Jenssegers\Blade\Blade;
 use App\Models\TaskModel;
 
 class TodoController
@@ -11,7 +12,7 @@ class TodoController
     {
         $repository = new TaskRepository();
         $todoItems = $repository->getAll();
-        $this->view("view", compact("todoItems"));
+        $this->view("home", compact("todoItems"));
     }
 
     public function create()
@@ -20,25 +21,26 @@ class TodoController
         $title = $_POST['title'];
         $description = $_POST['description'];
         $todoItems = $repository->getAll();
-        //$errors = [];
-        /*if (empty($title)) {
-            $errors[] = "Title Require!!";
+        $errors = [];
+        if (empty($title)) {
+            $errors['title'] = "Title Require!!";
+        } elseif (strlen($title) < 3) {
+            $errors['title'] = "Less than 3!!";
         }
         if (empty($description)) {
-            $errors[] = "Description Require!!";
-        }*/
+            $errors['description'] = "Description Require!!";
+        }
         if (count($todoItems) >= 10) {
-            echo '<script language="javascript">';
-            echo 'alert("Not more than 10 tasks!!")';
-            echo '</script>';
-        }else {
+            $errors['count'] = "More Than Ten!!";
+        }
+        if (count($errors) == 0) {
             $task = new TaskModel();
             $task->setTitle($title);
             $task->setDescription($description);
             $repository->create($task);
             array_unshift($todoItems, $task);
         }
-        $this->view("view", compact("todoItems"));
+        $this->view("home", compact("todoItems", "errors"));
     }
 
     public function update()
@@ -48,7 +50,7 @@ class TodoController
         $task->setDone($task->getDone() ? 0 : 1);
         $repository->update($task);
         $todoItems = $repository->getAll();
-        $this->view("view", compact("todoItems"));
+        $this->view("home", compact("todoItems"));
         
     }
 
@@ -57,13 +59,12 @@ class TodoController
         $repository = new TaskRepository();
         $repository->deleteById($_POST['id']);
         $todoItems = $repository->getAll();
-        $this->view("view", compact("todoItems"));
+        $this->view("home", compact("todoItems"));
     }
 
-    protected function view(string $viewName,array $params)
+    protected function view(string $viewName, array $params)
     {
-        extract($params);
-        include ROOT_DIR . "/src/views/{$viewName}.php";
+        $blade = new Blade(ROOT_DIR . '/src/views', ROOT_DIR . '/cache/views');
+        echo $blade->render($viewName, $params);
     }
-
 }

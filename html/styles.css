@@ -123,6 +123,13 @@ footer.addbtn {
   margin-bottom: -60px;
 }
 
+.error {
+  color: red;
+}
+
+.errors input {
+  border-color: red;
+}
 
 /* 
 ul {

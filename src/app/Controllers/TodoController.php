@@ -20,24 +20,25 @@ class TodoController
         $title = $_POST['title'];
         $description = $_POST['description'];
         $todoItems = $repository->getAll();
-        $errors = [];
-        if (empty($title)) {
+        //$errors = [];
+        /*if (empty($title)) {
             $errors[] = "Title Require!!";
         }
         if (empty($description)) {
             $errors[] = "Description Require!!";
-        }
+        }*/
         if (count($todoItems) >= 10) {
-            $errors[] = "Not more than 10 tasks!!";
-        }
-        if (count($errors) == 0) {
+            echo '<script language="javascript">';
+            echo 'alert("Not more than 10 tasks!!")';
+            echo '</script>';
+        }else {
             $task = new TaskModel();
             $task->setTitle($title);
             $task->setDescription($description);
             $repository->create($task);
             array_unshift($todoItems, $task);
         }
-        $this->view("view", compact("todoItems", "errors"));
+        $this->view("view", compact("todoItems"));
     }
 
     public function update()

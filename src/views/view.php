@@ -57,18 +57,25 @@
     </ul>
     <form method="post" action="">
         <input type="hidden" name="method" value="post">
+        <ul class="errorMessages"></ul>
+    
         <div class="inputDiv" name="titlediv">
-            <input class="inputins" type="text" name="title" placeholder="Title...">
+            <label for="title">Title:</label>
+            <input id="title" class="inputins"  name="title" type="text" required>
         </div>
-        <div class="inputDiv" name="descrdiv">
-            <input class="inputins" type="text" name="description" placeholder="Description...">
-        </div>
-        <footer class="addbtn">
-            <button class=add-button type="submit">
-                <i class="fas fa-plus"></i>
-            </button>
-        </footer>
-    </form>
 
+        <div class="inputDiv" name="descrdiv">
+            <label for="description">Description:</label>
+            <input id="description" class="inputins" type="text" name="description" required>
+        </div>
+        
+        <div class="buttons">
+            <footer class="addbtn">
+                <button class=add-button type="submit">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </footer>
+        </div>
+    </form>​
 </body>
 </html>
